@@ -5,15 +5,14 @@ public class RpgImd {
     public static Scanner leitor = new Scanner(System.in);
 
     public static void main(String[] args) {
-      Scanner leitor = new Scanner(System.in);
-      int valor = leitor.nextInt();
-
-
-      if (valor == 2) {
-      System.out.print("");
-      }
-
-
+      int linha = leitor.nextInt();
+      System.out.println(linha);
+      Menu();
     }
 
+    public static void Menu(){
+      System.out.println("Menu");
+      System.out.println("Digite 1 para iniciar");
+
+    }
 }
