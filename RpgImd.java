@@ -6,6 +6,11 @@ public class RpgImd {
     public static Scanner leitor = new Scanner(System.in);
     public static int dificuldade = 5;
     public static Random gerador = new Random();
+    public static String nome;
+    public static String sexo;
+    public static String classe;
+    public static int level;
+    public static int exp;
 
 /* como usar o leitor
   int linha = leitor.nextInt();
