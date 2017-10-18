@@ -38,7 +38,13 @@ public class RpgImd {
         System.out.println("");
       }
 
+      //meio da tela
+
+
       menu();
+
+
+
 
       for (int i = 0; i < 3; i++){
         System.out.println("");
