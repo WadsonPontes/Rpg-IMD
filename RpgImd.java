@@ -17,8 +17,7 @@ public class RpgImd {
     public static int dadod20;
     public static int dadod10;
     public static int dadod6;
-    public static boolean menub = true;
-    public static boolean primeirab = true;
+    public static boolean menu_primeira = true;
 
 /* como usar o leitor
   tipo nome = leitor.nextTipo();
@@ -42,6 +41,8 @@ public class RpgImd {
 
 
       menu();
+      primeira();
+      ajudar();
 
 
 
@@ -54,19 +55,17 @@ public class RpgImd {
       }
       System.out.print("\n>");
       escolha = leitor.nextInt();
-    } while(escolha != 5);
+    } while(escolha != 666);
   }
 
 
 
     public static void menu(){ //Menu do RPG
-      if (menub == true){
-      System.out.println("\t\t\t\t\t\t>Menu\n");
-      System.out.println("\t\t\t\t>Digite \"iniciar\" para iniciar");
-      menub = false;
-      }
-      if ((menub == false) && (escolha == 10))  {
-        menub = true;
+      if ((escolha == 9) || (menu_primeira == true)){
+      System.out.println(">Menu\n");
+      System.out.println(">Digite \"1\" para iniciar");
+      System.out.println(">Digite \"190\" para olhar o menu de ajuda");
+      menu_primeira = false;
       }
     }
 
@@ -124,7 +123,22 @@ public class RpgImd {
 
 
     public static void primeira(){
-      System.out.println("Ola, seja bem vindo ao mundo do Ascii");
+      if(escolha == 1){
+        System.out.println(">Ola, seja bem vindo ao mundo do Ascii");
+        System.out.println(">Aqui voce encontra-se presente em um mundo de rpg");
+        System.out.println(">Voce passara por muitas aventuras e certamente ira se divertir");
+      }
+    }
+
+
+
+    public static void ajudar(){
+      if(escolha == 190) {
+        System.out.println("Digite \"1\"   para iniciar o rpg");
+        System.out.println("Digite \"666\" para sair do rpg");
+        System.out.println("Digite \"9\"   para voltar ao menu");
+        System.out.println("Digite \"190\" para retornar a esta tela");
+      }
     }
 
 
