@@ -6,14 +6,8 @@ public class RpgImd {
 
     public static Scanner leitor = new Scanner(System.in);
     public static Random gerador = new Random();
-    public static String nome;
-    public static String sexo;
-    public static String classe;
     public static int escolha;
-    public static int level;
-    public static int exp;
     public static int dificuldade = 5;
-    public static int vida;
     public static int dadod20;
     public static int dadod10;
     public static int dadod6;
@@ -75,11 +69,11 @@ public class RpgImd {
       int dado20 = gerador.nextInt(20)+1;
       dadod20 = dado20;
       if (dado20 > dificuldade){
-        System.out.println("d20 SUCESSO = " + dado20);
+        System.out.println(">d20 SUCESSO = " + dado20);
       }
 
       else{
-        System.out.println("FALHA = " + dado20);
+        System.out.println(">FALHA = " + dado20);
       }
 
     }
@@ -90,11 +84,11 @@ public class RpgImd {
       int dado10 = gerador.nextInt(10)+1;
       dadod10 = dado10;
       if (dado10 > dificuldade){
-        System.out.println("d10 SUCESSO =" + dado10);
+        System.out.println(">d10 SUCESSO =" + dado10);
       }
 
       else{
-        System.out.println("FALHA");
+        System.out.println(">FALHA");
       }
     }
 
@@ -104,20 +98,18 @@ public class RpgImd {
       int dado6 = gerador.nextInt(6)+1;
       dadod6 = dado6;
       if (dado6 > dificuldade){
-      System.out.println("d6 SUCESSO =" + dado6);
+      System.out.println(">d6 SUCESSO =" + dado6);
       }
 
       else{
-        System.out.println("FALHA");
+        System.out.println(">FALHA");
       }
     }
 
 
 
     public static void morte(){ //tela de morte
-      if (vida <= 0) {
-        System.out.println("Voce morreu, seu boboca");
-      }
+        System.out.println(">Voce morreu, seu boboca");
     }
 
 
@@ -134,10 +126,10 @@ public class RpgImd {
 
     public static void ajudar(){
       if(escolha == 190) {
-        System.out.println("Digite \"1\"   para iniciar o rpg");
-        System.out.println("Digite \"666\" para sair do rpg");
-        System.out.println("Digite \"9\"   para voltar ao menu");
-        System.out.println("Digite \"190\" para retornar a esta tela");
+        System.out.println(">Digite \"1\"   para iniciar o rpg");
+        System.out.println(">Digite \"666\" para sair do rpg");
+        System.out.println(">Digite \"9\" para voltar ao menu");
+        System.out.println(">Digite \"190\" para retornar a esta tela");
       }
     }
 
