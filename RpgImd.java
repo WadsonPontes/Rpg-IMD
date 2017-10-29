@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 
-public class RpgImd {
+public class RpgImd{
 
     public static Scanner leitor = new Scanner(System.in);
     public static Random gerador = new Random();
@@ -12,6 +12,9 @@ public class RpgImd {
     public static int dadod10;
     public static int dadod6;
     public static boolean menu_primeira = true;
+    public static String claida;
+    public static String ignorarEnter;
+    public static Personagem jogador = new Personagem("","", 0, 0, 0, 0, 0);
 
 /* como usar o leitor
   tipo nome = leitor.nextTipo();
@@ -19,37 +22,47 @@ public class RpgImd {
 */
 
     public static void main(String[] args) {
+
       do{
-      for (int i = 0; i < 150; i++){
-        System.out.println("");
-      }
-      for (int j = 0; j < 120; j++){
-        System.out.print("=");
-      }
-      System.out.print("");
-      for (int i = 0; i < 2; i++){
-        System.out.println("");
-      }
+        for (int i = 0; i < 150; i++){
+          System.out.println("");
+        }
+        for (int j = 0; j < 120; j++){
+          System.out.print("=");
+        }
+        System.out.print("");
+        for (int i = 0; i < 2; i++){
+          System.out.println("");
+        }
 
-      //meio da tela
+        //meio da tela
+
+        menu();
+        ajudar();
+
+        if(escolha == 50){
+          System.out.print (jogador.getClasse());
+        }
 
 
-      menu();
-      primeira();
-      ajudar();
+        for (int i = 0; i < 3; i++){
+          System.out.println("");
+        }
+        for (int k = 0; k < 120; k++){
+          System.out.print("=");
+        }
+        System.out.print("\n>");
+        escolha = leitor.nextInt();
+      } while(escolha != 666);
 
 
+      System.out.print("Digite sua classe aqui: ");
+      ignorarEnter = leitor.nextLine();
+      claida = leitor.nextLine();
+      jogador.setClasse(claida);
+      System.out.println("Parabens sua classe agora e: " + jogador.getClasse());
 
 
-      for (int i = 0; i < 3; i++){
-        System.out.println("");
-      }
-      for (int k = 0; k < 120; k++){
-        System.out.print("=");
-      }
-      System.out.print("\n>");
-      escolha = leitor.nextInt();
-    } while(escolha != 666);
   }
 
 
@@ -119,6 +132,7 @@ public class RpgImd {
         System.out.println(">Ola, seja bem vindo ao mundo do Ascii");
         System.out.println(">Aqui voce encontra-se presente em um mundo de rpg");
         System.out.println(">Voce passara por muitas aventuras e certamente ira se divertir");
+        System.out.println(">Digite o seu nome a seguir\n>Aqui: ");
       }
     }
 
@@ -126,12 +140,14 @@ public class RpgImd {
 
     public static void ajudar(){
       if(escolha == 190) {
+        System.out.println(">\t\t\t\t TELINHA DE AJUDA");
         System.out.println(">Digite \"1\"   para iniciar o rpg");
         System.out.println(">Digite \"666\" para sair do rpg");
         System.out.println(">Digite \"9\" para voltar ao menu");
         System.out.println(">Digite \"190\" para retornar a esta tela");
       }
     }
+
 
 
 
