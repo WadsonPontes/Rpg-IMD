@@ -11,10 +11,11 @@ public class RpgImd{
     public static int dadod20;
     public static int dadod10;
     public static int dadod6;
+    public static int classeNumero;
     public static boolean menu_primeira = true;
     public static String claida;
     public static String ignorarEnter;
-    public static Personagem jogador = new Personagem("","", 0, 0, 0, 0, 0);
+    public static Personagem jogador = new Personagem();
 
 /* como usar o leitor
   tipo nome = leitor.nextTipo();
@@ -24,43 +25,19 @@ public class RpgImd{
     public static void main(String[] args) {
 
       do{
-        for (int i = 0; i < 150; i++){
-          System.out.println("");
-        }
-        for (int j = 0; j < 120; j++){
-          System.out.print("=");
-        }
-        System.out.print("");
-        for (int i = 0; i < 2; i++){
-          System.out.println("");
-        }
 
+        topo();
         //meio da tela
 
         menu();
         ajudar();
+        primeira();
+        fichaJ();
 
-        if(escolha == 50){
-          System.out.print (jogador.getClasse());
-        }
+        base();
 
-
-        for (int i = 0; i < 3; i++){
-          System.out.println("");
-        }
-        for (int k = 0; k < 120; k++){
-          System.out.print("=");
-        }
-        System.out.print("\n>");
         escolha = leitor.nextInt();
       } while(escolha != 666);
-
-
-      System.out.print("Digite sua classe aqui: ");
-      ignorarEnter = leitor.nextLine();
-      claida = leitor.nextLine();
-      jogador.setClasse(claida);
-      System.out.println("Parabens sua classe agora e: " + jogador.getClasse());
 
 
   }
@@ -132,7 +109,19 @@ public class RpgImd{
         System.out.println(">Ola, seja bem vindo ao mundo do Ascii");
         System.out.println(">Aqui voce encontra-se presente em um mundo de rpg");
         System.out.println(">Voce passara por muitas aventuras e certamente ira se divertir");
-        System.out.println(">Digite o seu nome a seguir\n>Aqui: ");
+        System.out.println(">Digite \"2\" para criar o seu personagem");
+        base();
+
+        escolha = leitor.nextInt();
+        if(escolha == 2){
+
+          topo();
+
+          criarJogador();
+
+          base();
+
+        }
       }
     }
 
@@ -150,5 +139,81 @@ public class RpgImd{
 
 
 
+    public static void fichaJ(){
+      if(escolha == 5){
+        jogador.fichaPlayer();
+      }
+    }
+
+
+
+    public static void criarJogador(){
+      System.out.print(">Digite o seu nome");
+      base();
+      ignorarEnter = leitor.nextLine();
+      claida = leitor.nextLine();
+      jogador.setNome(claida);
+
+      topo();
+      System.out.print("\n>Digite \"1\" para Espadachim, \"2\" para Arqueiro, ou \"3\" para Mago\n");
+      System.out.println(">Qualquer outro valor sera considerado aprendiz");
+
+      base();
+
+      classeNumero = leitor.nextInt();
+
+      switch(classeNumero){
+        case 1: jogador.setClasse("Espadachim");
+          break;
+        case 2: jogador.setClasse("Arqueiro");
+          break;
+        case 3: jogador.setClasse("Mago");
+          break;
+        default: jogador.setClasse("Aprendiz");
+      }
+
+      topo();
+      System.out.println("Digite sua idade");
+      base();
+      escolha = leitor.nextInt();
+      jogador.setIdade(escolha);
+
+      limpar();
+    }
+
+
+
+    public static void topo(){
+      for (int i = 0; i < 150; i++){
+        System.out.println("");
+      }
+      for (int j = 0; j < 120; j++){
+        System.out.print("=");
+      }
+      System.out.print("");
+      for (int i = 0; i < 2; i++){
+        System.out.println("");
+      }
+    }
+
+
+
+    public static void base(){
+      for (int i = 0; i < 3; i++){
+        System.out.println("");
+      }
+      for (int k = 0; k < 120; k++){
+        System.out.print("=");
+      }
+      System.out.print("\n>");
+    }
+
+
+
+    public static void limpar(){
+      for (int i = 0; i < 150; i++){
+        System.out.println("");
+      }
+    }
 
 }
