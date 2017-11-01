@@ -8,9 +8,6 @@ public class RpgImd{
     public static Random gerador = new Random();
     public static int escolha;
     public static int dificuldade = 5;
-    public static int dadod20;
-    public static int dadod10;
-    public static int dadod6;
     public static int classeNumero;
     public static boolean menu_primeira = true;
     public static String claida;
@@ -55,45 +52,23 @@ public class RpgImd{
 
 
 
-    public static void d20(){ //Dado de 20 lados
+    public static int d20(){ //Dado de 20 lados
       int dado20 = gerador.nextInt(20)+1;
-      dadod20 = dado20;
-      if (dado20 > dificuldade){
-        System.out.println(">d20 SUCESSO = " + dado20);
-      }
-
-      else{
-        System.out.println(">FALHA = " + dado20);
-      }
-
+      return dado20;
     }
 
 
 
-    public static void d10(){ //Dado de 10 lados
+    public static int d10(){ //Dado de 10 lados
       int dado10 = gerador.nextInt(10)+1;
-      dadod10 = dado10;
-      if (dado10 > dificuldade){
-        System.out.println(">d10 SUCESSO =" + dado10);
-      }
-
-      else{
-        System.out.println(">FALHA");
-      }
+      return dado10;
     }
 
 
 
-    public static void d6(){ //Dado de 6 lados
+    public static int d6(){ //Dado de 6 lados
       int dado6 = gerador.nextInt(6)+1;
-      dadod6 = dado6;
-      if (dado6 > dificuldade){
-      System.out.println(">d6 SUCESSO =" + dado6);
-      }
-
-      else{
-        System.out.println(">FALHA");
-      }
+      return dado6;
     }
 
 

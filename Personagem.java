@@ -9,9 +9,10 @@ public class Personagem{
   private int dinheiro;
   private int vida;
 
-  public Personagem(/*String classe, String nome, int idade, int level, int experiencia, int dinheiro, int vida  */){
+  public Personagem(){
 
   }
+
 
 
   public String getClasse(){ //demonstra a classe do Personagem
@@ -97,6 +98,7 @@ public class Personagem{
   }
 
 
+
   public void fichaPlayer(){
     System.out.println("\t\t>SUA FICHA\n\n\n");
     System.out.println(">Seu Nome e: " + this.nome);
@@ -108,6 +110,13 @@ public class Personagem{
     System.out.println(">Voce tem " + this.dinheiro + " de Dinheiro");
   }
 
+
+
+  public void personagemNovo(){
+    this.dinheiro = 100;
+    this.level = 1;
+    this.experiencia = 0;
+  }
 
 
 }
