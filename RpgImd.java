@@ -109,6 +109,7 @@ public class RpgImd{
         System.out.println(">Digite \"666\" para sair do rpg");
         System.out.println(">Digite \"9\" para voltar ao menu");
         System.out.println(">Digite \"190\" para retornar a esta tela");
+        System.out.println(">Digite \"5\" para ver a sua ficha de personagem")
       }
     }
 
@@ -146,12 +147,14 @@ public class RpgImd{
           break;
         default: jogador.setClasse("Aprendiz");
       }
-
+      jogador.personagemNovo();
       topo();
-      System.out.println("Digite sua idade");
+      System.out.println(">Parabens, voce conseguiu " + jogador.getVida() + " de vida");
+      System.out.println(">Digite sua idade");
       base();
       escolha = leitor.nextInt();
       jogador.setIdade(escolha);
+
 
       limpar();
     }
