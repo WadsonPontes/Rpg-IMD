@@ -146,12 +146,14 @@ public class RpgImd{
           break;
         default: jogador.setClasse("Aprendiz");
       }
-
+      jogador.personagemNovo();
       topo();
-      System.out.println("Digite sua idade");
+      System.out.println(">Parabens, voce conseguiu " + jogador.getVida() + " de vida");
+      System.out.println(">Digite sua idade");
       base();
       escolha = leitor.nextInt();
       jogador.setIdade(escolha);
+
 
       limpar();
     }

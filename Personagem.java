@@ -1,4 +1,4 @@
-public class Personagem{
+public class Personagem extends RpgImd{
 
 
   private String classe;
@@ -8,6 +8,9 @@ public class Personagem{
   private int experiencia;
   private int dinheiro;
   private int vida;
+  private int forca;
+  private int inteligencia;
+  private int constituicao;
 
   public Personagem(){
 
@@ -116,6 +119,22 @@ public class Personagem{
     this.dinheiro = 100;
     this.level = 1;
     this.experiencia = 0;
+    this.forca = 5;
+    this.constituicao = 5;
+    this.inteligencia = 5;
+
+    switch(classeNumero){
+      case 1: this.vida = gerador.nextInt(20) + 101 + this.constituicao;
+      break;
+      case 2: this.vida = gerador.nextInt(20) + 101 + (this.constituicao / 2);
+      break;
+      case 3: this.vida = gerador.nextInt(20) + 101 + (this.constituicao / 3);
+      break;
+      default: this.vida = 100;
+      break;
+    }
+
+
   }
 
 
