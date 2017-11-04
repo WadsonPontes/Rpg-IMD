@@ -1,4 +1,4 @@
-public class Personagem{
+public class Personagem extends RpgImd{
 
 
   private String classe;
