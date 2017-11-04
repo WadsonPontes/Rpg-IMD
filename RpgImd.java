@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class RpgImd{
 
-//PEDRO PRA MIM É VIADO <3
-
     public static Scanner leitor = new Scanner(System.in);
     public static Random gerador = new Random();
     public static int escolha;
@@ -151,7 +149,6 @@ public class RpgImd{
       }
       jogador.personagemNovo();
       topo();
-      System.out.println(">Parabens, voce conseguiu " + jogador.getVida() + " de vida");
       System.out.println(">Digite sua idade");
       base();
       escolha = leitor.nextInt();

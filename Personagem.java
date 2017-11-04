@@ -1,4 +1,4 @@
-public class Personagem extends RpgImd{
+public class Personagem{
 
 
   private String classe;
@@ -11,6 +11,9 @@ public class Personagem extends RpgImd{
   private int forca;
   private int inteligencia;
   private int constituicao;
+  private int pontosPassivos;
+  private int pontosAtivos;
+  private int pontosAtributos;
 
   public Personagem(){
 
@@ -103,14 +106,22 @@ public class Personagem extends RpgImd{
 
 
   public void fichaPlayer(){
-    System.out.println("\t\t>SUA FICHA\n\n\n");
-    System.out.println(">Seu Nome e: " + this.nome);
-    System.out.println(">Sua Classe e: " + this.classe);
-    System.out.println(">Sua Idade e: " + this.idade);
-    System.out.println(">Voce tem " + this.vida + " de Vida");
-    System.out.println(">Seu Level e: " + this.level);
-    System.out.println(">Voce tem " + this.experiencia + " de Experiencia");
-    System.out.println(">Voce tem " + this.dinheiro + " de Dinheiro");
+    System.out.println("\t\t\t>SUA FICHA\n");
+    System.out.println(">Nome: " + this.nome);
+    System.out.println(">Classe: " + this.classe);
+    System.out.println(">Idade: " + this.idade);
+    System.out.println(">Vida: " + this.vida);
+    System.out.println(">Level: " + this.level);
+    System.out.println(">Experiencia(exp): " + this.experiencia);
+    System.out.println(">Dinheiro: " + this.dinheiro);
+    System.out.println("\n\n\t\t\t>STATUS");
+    if(this.pontosAtributos > 0){
+      System.out.println("\n\t\t>Pontos para gastar: " + this.pontosAtributos + "\n");
+      System.out.println("\tint(+): " + this.inteligencia +  "     for(+): " + this.forca + "      const(+): " + this.constituicao);
+    }
+    else{
+      System.out.println("\tint: " + this.inteligencia +  "     for: " + this.forca + "      const: " + this.constituicao);
+    }
   }
 
 
@@ -122,6 +133,9 @@ public class Personagem extends RpgImd{
     this.forca = 5;
     this.constituicao = 5;
     this.inteligencia = 5;
+    this.pontosAtributos = 5;
+    this.pontosPassivos = 2;
+    this.pontosAtivos = 1;
 
     switch(classeNumero){
       case 1: this.vida = gerador.nextInt(20) + 101 + this.constituicao;

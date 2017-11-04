@@ -1,4 +1,4 @@
-public class Monstro{
+public class Monstro extends RpgImd{
 
 
   private String tipo; //tipo de monstro
