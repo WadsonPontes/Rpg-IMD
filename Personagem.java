@@ -152,4 +152,46 @@ public class Personagem extends RpgImd{
   }
 
 
+
+  public void distribuirAtributos(){
+    if(this.pontosAtributos > 0){
+      int distribuir;
+      do{
+        topo();
+        System.out.println(">\"1\" para forca\n>\"2\" para inteligencia\n>\"3\" para constituicao\n>\"0\" para sair");
+        System.out.println("\n\n>Voce ainda tem " + this.pontosAtributos + " pontos para gastar");
+        base();
+        distribuir = leitor.nextInt();
+        switch(distribuir){
+          case 1: this.forca = this.forca + 1;
+                  this.pontosAtributos = this.pontosAtributos - 1;
+          break;
+          case 2: this.inteligencia = this.inteligencia + 1;
+                  this.pontosAtributos = this.pontosAtributos - 1;
+          break;
+          case 3: this.constituicao = this.constituicao + 1;
+                  this.pontosAtributos = this.pontosAtributos - 1;
+          break;
+        }
+
+      }while((this.pontosAtributos != 0) && (distribuir != 0)) ;
+
+      topo();
+
+      if(this.pontosAtributos < 1){
+        System.out.println(">Voce distribuiu todos os pontos");
+      }
+      else{
+        System.out.println(">Voce ainda tem " + this.pontosAtributos + " pontos para distribuir");
+        System.out.println(">Se quiser continuar distribuindo e so digitar \"6\"");
+      }
+    }
+
+
+    else{
+      System.out.println("Voce nao tem pontos de atributos para distribuir");
+    }
+
+  }
+
 }

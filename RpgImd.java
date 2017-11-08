@@ -27,9 +27,10 @@ public class RpgImd{
         //meio da tela
 
         menu();
-        ajudar();
         primeira();
         fichaJ();
+        distriAtributos();
+
 
         base();
 
@@ -104,12 +105,13 @@ public class RpgImd{
 
     public static void ajudar(){
       if(escolha == 190) {
-        System.out.println(">\t\t\t\t TELINHA DE AJUDA");
+        System.out.println("\t\t\t\t >TELINHA DE AJUDA");
         System.out.println(">Digite \"1\"   para iniciar o rpg");
         System.out.println(">Digite \"666\" para sair do rpg");
         System.out.println(">Digite \"9\" para voltar ao menu");
         System.out.println(">Digite \"190\" para retornar a esta tela");
         System.out.println(">Digite \"5\" para ver a sua ficha de personagem");
+        System.out.println(">Digite \"6\" para distribuir os pontos de atributos");
       }
     }
 
@@ -145,7 +147,10 @@ public class RpgImd{
           break;
         case 3: jogador.setClasse("Mago");
           break;
+        case 999: jogador.setClasse("Capivara");
+          break;
         default: jogador.setClasse("Aprendiz");
+          break;
       }
       jogador.personagemNovo();
       topo();
@@ -192,5 +197,14 @@ public class RpgImd{
         System.out.println("");
       }
     }
+
+
+
+    public static void distriAtributos(){
+      if(escolha == 6){
+      jogador.distribuirAtributos();
+      }
+    }
+
 
 }
