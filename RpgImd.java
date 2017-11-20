@@ -6,13 +6,17 @@ public class RpgImd{
 
     public static Scanner leitor = new Scanner(System.in);
     public static Random gerador = new Random();
+    public static Personagem jogador = new Personagem();
     public static int escolha;
     public static int dificuldade = 5;
     public static int classeNumero;
+    public static int dadod20;
+    public static int dadod10;
+    public static int dadod6;
     public static boolean menu_primeira = true;
     public static String claida;
     public static String ignorarEnter;
-    public static Personagem jogador = new Personagem();
+
 
 /* como usar o leitor
   tipo nome = leitor.nextTipo();
@@ -20,16 +24,33 @@ public class RpgImd{
 */
 
     public static void main(String[] args) {
-
+      jogador.setVida(500);
       do{
 
         topo();
         //meio da tela
 
-        menu();
-        primeira();
-        fichaJ();
-        distriAtributos();
+        switch(escolha){
+          case 1: primeira();
+            break;
+          case 2: fichaJ();
+            break;
+          case 3: distriAtributos();
+            break;
+          case 190: ajudar();
+            break;
+          case 300: testeA();
+            break;
+          case 301: testeB();
+            break;
+          default: menu();
+            break;
+        }
+
+        if(jogador.getVida() < 1){
+          morte();
+        }
+
 
 
         base();
@@ -53,35 +74,39 @@ public class RpgImd{
 
 
 
-    public static int d20(){ //Dado de 20 lados
+    public static void d20(){ //Dado de 20 lados
       int dado20 = gerador.nextInt(20)+1;
-      return dado20;
+      dadod20 = dado20;
+      System.out.println(dado20);
     }
 
 
 
-    public static int d10(){ //Dado de 10 lados
+    public static void d10(){ //Dado de 10 lados
       int dado10 = gerador.nextInt(10)+1;
-      return dado10;
+      dadod10 = dado10;
+      System.out.println(dado10);
     }
 
 
 
-    public static int d6(){ //Dado de 6 lados
+    public static void d6(){ //Dado de 6 lados
       int dado6 = gerador.nextInt(6)+1;
-      return dado6;
+      dadod6 = dado6;
+      System.out.println(dado6);
     }
 
 
 
     public static void morte(){ //tela de morte
+        topo();
         System.out.println(">Voce morreu, seu boboca");
+        jogador.morto();
     }
 
 
 
     public static void primeira(){
-      if(escolha == 1){
         System.out.println(">Ola, seja bem vindo ao mundo do Ascii");
         System.out.println(">Aqui voce encontra-se presente em um mundo de rpg");
         System.out.println(">Voce passara por muitas aventuras e certamente ira se divertir");
@@ -98,7 +123,6 @@ public class RpgImd{
           base();
 
         }
-      }
     }
 
 
@@ -108,31 +132,30 @@ public class RpgImd{
         System.out.println("\t\t\t\t >TELINHA DE AJUDA");
         System.out.println(">Digite \"1\"   para iniciar o rpg");
         System.out.println(">Digite \"666\" para sair do rpg");
-        System.out.println(">Digite \"9\" para voltar ao menu");
+        System.out.println(">Digite \"0\" para voltar ao menu");
         System.out.println(">Digite \"190\" para retornar a esta tela");
-        System.out.println(">Digite \"5\" para ver a sua ficha de personagem");
-        System.out.println(">Digite \"6\" para distribuir os pontos de atributos");
+        System.out.println(">Digite \"2\" para ver a sua ficha de personagem");
+        System.out.println(">Digite \"3\" para distribuir os pontos de atributos");
       }
     }
 
 
 
     public static void fichaJ(){
-      if(escolha == 5){
         jogador.fichaPlayer();
-      }
     }
 
 
 
     public static void criarJogador(){
-      System.out.print(">Digite o seu nome");
+      System.out.print(">Digite o nome do personagem");
       base();
       ignorarEnter = leitor.nextLine();
       claida = leitor.nextLine();
       jogador.setNome(claida);
 
       topo();
+      System.out.println("\n\t\t>CLASSES\n\n");
       System.out.print("\n>Digite \"1\" para Espadachim, \"2\" para Arqueiro, ou \"3\" para Mago\n");
       System.out.println(">Qualquer outro valor sera considerado aprendiz");
 
@@ -154,7 +177,7 @@ public class RpgImd{
       }
       jogador.personagemNovo();
       topo();
-      System.out.println(">Digite sua idade");
+      System.out.println(">Digite a idade do personagem");
       base();
       escolha = leitor.nextInt();
       jogador.setIdade(escolha);
@@ -201,10 +224,18 @@ public class RpgImd{
 
 
     public static void distriAtributos(){
-      if(escolha == 6){
       jogador.distribuirAtributos();
-      }
     }
 
 
+
+    public static void testeA(){
+      jogador.pontosAtributos = jogador.pontosAtributos + 5;
+    }
+
+
+
+    public static void testeB(){
+      jogador.setVida(jogador.getVida() - 5);
+    }
 }

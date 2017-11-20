@@ -12,6 +12,8 @@ public class Monstro{
 
   }
 
+
+
   public String getTipo(){
     return this.tipo;
   }

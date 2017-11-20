@@ -8,12 +8,13 @@ public class Personagem extends RpgImd{
   private int experiencia;
   private int dinheiro;
   private int vida;
+  private int vidaCheia;
   private int forca;
   private int inteligencia;
   private int constituicao;
   private int pontosPassivos;
   private int pontosAtivos;
-  private int pontosAtributos;
+  public int pontosAtributos;
 
   public Personagem(){
 
@@ -110,17 +111,17 @@ public class Personagem extends RpgImd{
     System.out.println(">Nome: " + this.nome);
     System.out.println(">Classe: " + this.classe);
     System.out.println(">Idade: " + this.idade);
-    System.out.println(">Vida: " + this.vida);
+    System.out.println(">Vida: " + this.vida + "/" + this.vidaCheia);
     System.out.println(">Level: " + this.level);
-    System.out.println(">Experiencia(exp): " + this.experiencia);
+    System.out.println(">Experiencia(exp): " + this.experiencia + "/30");
     System.out.println(">Dinheiro: " + this.dinheiro);
-    System.out.println("\n\n\t\t\t>STATUS");
+    System.out.println("\n\n\t\t\t>STATUS\n");
     if(this.pontosAtributos > 0){
       System.out.println("\n\t\t>Pontos para gastar: " + this.pontosAtributos + "\n");
-      System.out.println("\tint(+): " + this.inteligencia +  "     for(+): " + this.forca + "      const(+): " + this.constituicao);
+      System.out.println("\t>for(+): " + this.forca +  "     >int(+): " + this.inteligencia + "      >const(+): " + this.constituicao);
     }
     else{
-      System.out.println("\tint: " + this.inteligencia +  "     for: " + this.forca + "      const: " + this.constituicao);
+      System.out.println("\t>for: " + this.forca +  "     >int: " + this.inteligencia + "      >const: " + this.constituicao);
     }
   }
 
@@ -136,20 +137,24 @@ public class Personagem extends RpgImd{
     this.pontosAtributos = 5;
     this.pontosPassivos = 2;
     this.pontosAtivos = 1;
+    this.vidaCheia = 0;
+    this.vida = 0;
+
+    this.distribuirAtributos();
 
     switch(classeNumero){
-      case 1: this.vida = gerador.nextInt(20) + 101 + this.constituicao;
+      case 1: this.vidaCheia = gerador.nextInt(20) + 101 + this.constituicao;
       break;
-      case 2: this.vida = gerador.nextInt(20) + 101 + (this.constituicao / 2);
+      case 2: this.vidaCheia = gerador.nextInt(20) + 101 + (this.constituicao / 2);
       break;
-      case 3: this.vida = gerador.nextInt(20) + 101 + (this.constituicao / 3);
+      case 3: this.vidaCheia = gerador.nextInt(20) + 101 + (this.constituicao / 3);
       break;
-      default: this.vida = 100;
+      default: this.vidaCheia = 100 + this.constituicao;
       break;
     }
-
-
+    this.vida = this.vidaCheia;
   }
+
 
 
 
@@ -158,7 +163,8 @@ public class Personagem extends RpgImd{
       int distribuir;
       do{
         topo();
-        System.out.println(">\"1\" para forca\n>\"2\" para inteligencia\n>\"3\" para constituicao\n>\"0\" para sair");
+        System.out.println("\t\t>Distribuir Atributos\n\n");
+        System.out.println(">Digite \"1\" para forca\n>Digite \"2\" para inteligencia\n>Digite \"3\" para constituicao\n>Digite \"0\" para sair");
         System.out.println("\n\n>Voce ainda tem " + this.pontosAtributos + " pontos para gastar");
         base();
         distribuir = leitor.nextInt();
@@ -182,16 +188,51 @@ public class Personagem extends RpgImd{
         System.out.println(">Voce distribuiu todos os pontos");
       }
       else{
-        System.out.println(">Voce ainda tem " + this.pontosAtributos + " pontos para distribuir");
-        System.out.println(">Se quiser continuar distribuindo e so digitar \"6\"");
+        System.out.println(">Voce ainda tem \"" + this.pontosAtributos + "\" pontos para distribuir");
+        System.out.println(">Se quiser continuar distribuindo e so digitar \"3\"");
       }
     }
 
-
     else{
-      System.out.println("Voce nao tem pontos de atributos para distribuir");
+      System.out.println(">Voce nao tem pontos de atributos para distribuir");
     }
 
   }
+
+
+
+  public void morto(){
+    System.out.println("\t\n\t>Seu personagem antes da morte\n\n\n");
+    System.out.println(">Seu nome era: " + this.nome);
+    System.out.println(">Sua idade era: " + this.idade);
+    System.out.println(">Seu dinheria era de: " + this.dinheiro);
+    System.out.println(">Seu Level: " + this.level);
+    System.out.println(">Sua experiencia: " + this.experiencia);
+    System.out.println(">Sua Forca: " + this.forca);
+    System.out.println(">Sua constituicao: " + this.constituicao);
+    System.out.println(">Sua inteligencia: " + this.inteligencia);
+    System.out.println(">Seus pontos de atributos: " + this.pontosAtributos);
+    System.out.println(">Seus pontos passivos: " + this.pontosPassivos);
+    System.out.println(">Seus pontos Ativos: " + this.pontosAtivos);
+  }
+
+
+
+  public int uparVida(){
+    switch(classeNumero){
+      case 1: this.vidaCheia = this.vidaCheia + this.constituicao + 10;
+      break;
+      case 2: this.vidaCheia = this.vidaCheia + (this.constituicao / 2) + 5;
+      break;
+      case 3: this.vidaCheia = this.vidaCheia + (this.constituicao / 3) + 2;
+      break;
+      default: this.vidaCheia = this.vidaCheia + (this.constituicao / 2);
+      break;
+    }
+    this.vida = this.vidaCheia;
+    return this.vidaCheia;
+  }
+
+
 
 }

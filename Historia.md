@@ -1,0 +1,1 @@
+Em uma época passada e distante um aventureiro da classe (classe escolhida), decide aventurar-se, então sai de sua humilde vila onde ele nunca foi muito longe buscar a sua historia em meio a o mundo caótico e desconhecido em que ele vivia, então veremos como ele sairá nessa aventura.
