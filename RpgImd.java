@@ -39,12 +39,16 @@ public class RpgImd{
             break;
           case 190: ajudar();
             break;
-          case 300: testeA();
-            break;
           case 301: testeB();
+            break;
+          case 302: testeA();
             break;
           default: menu();
             break;
+        }
+
+        if(jogador.upou() == true){
+          jogador.LevelUp();
         }
 
         if(jogador.getVida() < 1){
@@ -129,7 +133,7 @@ public class RpgImd{
 
     public static void ajudar(){
       if(escolha == 190) {
-        System.out.println("\t\t\t\t >TELINHA DE AJUDA");
+        System.out.println("\t\t\t\t>TELINHA DE AJUDA\n\n");
         System.out.println(">Digite \"1\"   para iniciar o rpg");
         System.out.println(">Digite \"666\" para sair do rpg");
         System.out.println(">Digite \"0\" para voltar ao menu");
@@ -229,13 +233,13 @@ public class RpgImd{
 
 
 
-    public static void testeA(){
-      jogador.pontosAtributos = jogador.pontosAtributos + 5;
+    public static void testeB(){
+      jogador.setVida(jogador.getVida() - 5);
     }
 
 
 
-    public static void testeB(){
-      jogador.setVida(jogador.getVida() - 5);
+    public static void testeA(){
+      jogador.setExperiencia(jogador.getExperiencia() + 30);
     }
 }

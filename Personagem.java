@@ -5,7 +5,8 @@ public class Personagem extends RpgImd{
   private String nome;
   private int idade;
   private int level;
-  private int experiencia;
+  private int experienciaAtual;
+  private int experienciaUpar;
   private int dinheiro;
   private int vida;
   private int vidaCheia;
@@ -14,7 +15,7 @@ public class Personagem extends RpgImd{
   private int constituicao;
   private int pontosPassivos;
   private int pontosAtivos;
-  public int pontosAtributos;
+  private int pontosAtributos;
 
   public Personagem(){
 
@@ -70,14 +71,14 @@ public class Personagem extends RpgImd{
 
 
 
-  public int getExperiencia(){ //demonstra a experiencia do personagem
-    return this.experiencia;
+  public int getExperiencia(){ //demonstra a experienciaAtual do personagem
+    return this.experienciaAtual;
   }
 
 
 
-  public void setExperiencia(int experiencia){
-    this.experiencia = experiencia;
+  public void setExperiencia(int experienciaAtual){
+    this.experienciaAtual = experienciaAtual;
   }
 
 
@@ -113,7 +114,7 @@ public class Personagem extends RpgImd{
     System.out.println(">Idade: " + this.idade);
     System.out.println(">Vida: " + this.vida + "/" + this.vidaCheia);
     System.out.println(">Level: " + this.level);
-    System.out.println(">Experiencia(exp): " + this.experiencia + "/30");
+    System.out.println(">Experiencia(exp): " + this.experienciaAtual + "/" + this.experienciaUpar);
     System.out.println(">Dinheiro: " + this.dinheiro);
     System.out.println("\n\n\t\t\t>STATUS\n");
     if(this.pontosAtributos > 0){
@@ -130,7 +131,7 @@ public class Personagem extends RpgImd{
   public void personagemNovo(){
     this.dinheiro = 100;
     this.level = 1;
-    this.experiencia = 0;
+    this.experienciaAtual = 0;
     this.forca = 5;
     this.constituicao = 5;
     this.inteligencia = 5;
@@ -139,6 +140,7 @@ public class Personagem extends RpgImd{
     this.pontosAtivos = 1;
     this.vidaCheia = 0;
     this.vida = 0;
+    this.experienciaUpar = 30;
 
     this.distribuirAtributos();
 
@@ -154,7 +156,6 @@ public class Personagem extends RpgImd{
     }
     this.vida = this.vidaCheia;
   }
-
 
 
 
@@ -207,7 +208,7 @@ public class Personagem extends RpgImd{
     System.out.println(">Sua idade era: " + this.idade);
     System.out.println(">Seu dinheria era de: " + this.dinheiro);
     System.out.println(">Seu Level: " + this.level);
-    System.out.println(">Sua experiencia: " + this.experiencia);
+    System.out.println(">Sua experiencia era: " + this.experienciaAtual + "/" + this.experienciaUpar);
     System.out.println(">Sua Forca: " + this.forca);
     System.out.println(">Sua constituicao: " + this.constituicao);
     System.out.println(">Sua inteligencia: " + this.inteligencia);
@@ -218,7 +219,7 @@ public class Personagem extends RpgImd{
 
 
 
-  public int uparVida(){
+  public void uparVida(){
     switch(classeNumero){
       case 1: this.vidaCheia = this.vidaCheia + this.constituicao + 10;
       break;
@@ -230,8 +231,68 @@ public class Personagem extends RpgImd{
       break;
     }
     this.vida = this.vidaCheia;
-    return this.vidaCheia;
   }
+
+
+
+  public boolean upou(){
+    if ((this.experienciaAtual >= this.experienciaUpar) && (this.experienciaAtual != 0)){
+      return true;
+    }
+    return false;
+  }
+
+
+
+  public void uparExp(){
+    //player tem 35/30 experiencia
+    this.experienciaAtual = 0;
+    //player tem 0/45
+    this.experienciaUpar = this.experienciaUpar + (this.experienciaUpar / 2);
+    //lvl: 1
+    this.level = this.level + 1;
+    //lvl: 2
+  }
+
+
+
+  public void uparPontos(){
+    this.pontosAtributos = this.pontosAtributos + 3;
+    this.pontosPassivos = this.pontosPassivos + 2;
+    this.pontosAtivos = this.pontosAtivos + 1;
+
+
+    switch(classeNumero){
+      case 1:
+        this.constituicao = this.constituicao + 2;
+        this.inteligencia = this.inteligencia + 1;
+        this.forca = this.forca + 3;
+        break;
+      case 2:
+        this.constituicao = this.constituicao + 2;
+        this.inteligencia = this.inteligencia + 2;
+        this.forca = this.forca + 2;
+        break;
+      case 3:
+        this.constituicao = this.constituicao + 1;
+        this.inteligencia = this.inteligencia + 3;
+        this.forca = this.forca + 1;
+        break;
+      default:
+        this.constituicao = this.constituicao + 1;
+        this.inteligencia = this.inteligencia + 1;
+        this.forca = this.forca + 1;
+        break;
+    }
+  }
+
+
+
+  public void LevelUp(){
+      uparPontos();
+      uparExp();
+      uparVida();
+    }
 
 
 
