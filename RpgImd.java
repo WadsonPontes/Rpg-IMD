@@ -20,6 +20,7 @@ public class RpgImd{
 
 /* como usar o leitor
   tipo nome = leitor.nextTipo();
+  int pinto = leitor.nextInt();
   System.out.println(nome);
 */
 
@@ -43,6 +44,7 @@ public class RpgImd{
             break;
           case 302: testeA();
             break;
+          case 303: testeC();
           default: menu();
             break;
         }
@@ -81,7 +83,6 @@ public class RpgImd{
     public static void d20(){ //Dado de 20 lados
       int dado20 = gerador.nextInt(20)+1;
       dadod20 = dado20;
-      System.out.println(dado20);
     }
 
 
@@ -89,7 +90,6 @@ public class RpgImd{
     public static void d10(){ //Dado de 10 lados
       int dado10 = gerador.nextInt(10)+1;
       dadod10 = dado10;
-      System.out.println(dado10);
     }
 
 
@@ -97,14 +97,12 @@ public class RpgImd{
     public static void d6(){ //Dado de 6 lados
       int dado6 = gerador.nextInt(6)+1;
       dadod6 = dado6;
-      System.out.println(dado6);
     }
 
 
 
     public static void morte(){ //tela de morte
         topo();
-        System.out.println(">Voce morreu, seu boboca");
         jogador.morto();
     }
 
@@ -123,8 +121,6 @@ public class RpgImd{
           topo();
 
           criarJogador();
-
-          base();
 
         }
     }
@@ -186,8 +182,8 @@ public class RpgImd{
       escolha = leitor.nextInt();
       jogador.setIdade(escolha);
 
-
-      limpar();
+      topo();
+      jogador.fichaPlayer();
     }
 
 
@@ -234,12 +230,19 @@ public class RpgImd{
 
 
     public static void testeB(){
-      jogador.setVida(jogador.getVida() - 5);
+      jogador.setVida(jogador.getVida() - 100);
     }
 
 
 
     public static void testeA(){
-      jogador.setExperiencia(jogador.getExperiencia() + 30);
+      jogador.setExperiencia(jogador.getExperiencia() + 900000000);
     }
+
+
+
+    public static void testeC(){
+      jogador.AtaqueBasico();
+    }
+
 }
