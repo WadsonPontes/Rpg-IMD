@@ -1,3 +1,3 @@
 @echo off
 :A
-java RpgImd
+java com/main/RpgImd

@@ -1,10 +1,14 @@
+package com.history.player;
+
+import com.main.*;
+import java.io.IOException;
+
 public class Personagem extends SerVivoComLevel{
 
 
   private String classe;
   private int idade;
   private int experienciaAtual;
-  // DESATUALIZADO private int experienciaUpar;
   private int dinheiro;
   private int forca;
   private int inteligencia;
@@ -13,6 +17,7 @@ public class Personagem extends SerVivoComLevel{
   private int pontosPassivos;
   private int pontosAtivos;
   private int pontosAtributos;
+  public int danoG;
 
   public Personagem(){
 
@@ -56,8 +61,8 @@ public class Personagem extends SerVivoComLevel{
 
 
 
-  public int getLevel(){ //demonstra o level do personagem
-    return level;
+  public double getLevel(){ //demonstra o level do personagem
+    return Math.round(Math.floor(level));
   }
 
 
@@ -125,7 +130,7 @@ public class Personagem extends SerVivoComLevel{
 
 
 
-  public void personagemNovo(){
+  public void personagemNovo() throws IOException, InterruptedException{
     this.dinheiro = 100;
     level = 1;
     this.experienciaAtual = 0;
@@ -138,7 +143,6 @@ public class Personagem extends SerVivoComLevel{
     this.pontosAtivos = 1;
     this.vidaCheia = 0;
     this.vida = 0;
-    // DESATUALIZADO this.experienciaUpar = 30;
 
     this.distribuirAtributos();
 
@@ -157,7 +161,7 @@ public class Personagem extends SerVivoComLevel{
 
 
 
-  public void distribuirAtributos(){
+  public void distribuirAtributos() throws IOException, InterruptedException{
     if(this.pontosAtributos > 0){
       int distribuir;
       do{
@@ -250,7 +254,6 @@ public class Personagem extends SerVivoComLevel{
     //player tem 35/30 experiencia
     this.experienciaAtual -= obterExperienciaMaxima();
     //player tem 5/45
-    // DESATUALIZADO this.experienciaUpar += (this.experienciaUpar / 2);
     //lvl: 1
       level += 1;
     //lvl: 2
@@ -304,51 +307,89 @@ public class Personagem extends SerVivoComLevel{
 
 
 
+  public int dificuldade(){
+    int difi = this.destreza / 10;
+    return difi;
+  }
+
+
+
+  public int dano(){
+    int danone = 1;
+    switch(classeNumero){
+    case 1:
+      danone = this.forca/10;
+      break;
+    case 2:
+      danone = this.destreza/10;
+      break;
+    case 3:
+      danone = this.inteligencia/10;
+      break;
+    }
+    return danone;
+  }
+
+
+
   public void AtaqueBasico(){
     d10();
+
     switch(classeNumero){
-      case 1: if(dadod10 > 5){
+
+      case 1:
+        if(dadod10 > (5 - dificuldade())){
         d10();
-        System.out.print("Voce causou " + dadod10 + " de dano");
-      }
-      else{
+        this.danoG = this.dano() + dadod10;
+        System.out.print("Voce causou " + this.danoG + " de dano");
+        }
+
+        else{
         System.out.print("Voce errou o ataque");
-      }
-             break;
+        }
+        break;
 
 
 
-      case 2: if(dadod10 > 5){
+      case 2:
+        if(dadod10 > (5 - dificuldade())){
         d10();
-        System.out.print("Voce causou " + dadod10 + " de dano");
-      }
+        this.danoG = this.dano() + dadod10;
+        System.out.print("Voce causou " + this.danoG + " de dano");
+        }
 
-      else{
+        else{
         System.out.print("Voce errou o ataque");
-      }
-      break;
+        }
+        break;
 
 
 
-      case 3: if(dadod10 > 5){
+      case 3:
+        if(dadod10 > (5 - dificuldade())){
         d10();
-        System.out.print("Voce causou " + dadod10 + " de dano");
-      }
-      else{
+        this.danoG = this.dano() + dadod10;
+        System.out.print("Voce causou " + this.danoG + " de dano");
+        }
+
+        else{
         System.out.print("Voce errou o ataque");
-      }
-              break;
+        }
+        break;
 
 
 
-      default: if(dadod10 > 6){
+      default:
+        if(dadod10 > (6 - dificuldade())){
         d10();
-        System.out.print("Voce causou " + dadod10 + " de dano");
-      }
-      else{
+        this.danoG = this.dano() + dadod10;
+        System.out.print("Voce causou " + this.danoG + " de dano");
+        }
+
+        else{
         System.out.print("Voce errou o ataque");
-      }
-             break;
+        }
+        break;
     }
 
   }

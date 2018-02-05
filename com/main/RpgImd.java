@@ -1,6 +1,9 @@
+package com.main;
+
 import java.util.Scanner;
 import java.util.Random;
-
+import com.history.player.Personagem;
+import java.io.IOException;
 
 public class RpgImd{
 
@@ -17,15 +20,16 @@ public class RpgImd{
     public static String claida;
     public static String ignorarEnter;
 
-
 /* como usar o leitor
   tipo nome = leitor.nextTipo();
   int pinto = leitor.nextInt();
   System.out.println(nome);
 */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException{
+
       jogador.setVida(500);
+
       do{
 
         topo();
@@ -101,14 +105,14 @@ public class RpgImd{
 
 
 
-    public static void morte(){ //tela de morte
-        topo();
+    public static void morte() throws IOException, InterruptedException{ //tela de morte
+      topo();
         jogador.morto();
     }
 
 
 
-    public static void primeira(){
+    public static void primeira() throws IOException, InterruptedException{
         System.out.println(">Ola, seja bem vindo ao mundo do Ascii");
         System.out.println(">Aqui voce encontra-se presente em um mundo de rpg");
         System.out.println(">Voce passara por muitas aventuras e certamente ira se divertir");
@@ -127,16 +131,17 @@ public class RpgImd{
 
 
 
-    public static void ajudar(){
+    public static void ajudar() throws IOException, InterruptedException{
+      Ferramentas f = new Ferramentas();
       if(escolha == 190) {
-        System.out.println("\t\t\t\t>TELINHA DE AJUDA\n\n");
-        System.out.println(">Digite \"1\"   para iniciar o rpg");
-        System.out.println(">Digite \"666\" para sair do rpg");
-        System.out.println(">Digite \"0\" para voltar ao menu");
-        System.out.println(">Digite \"190\" para retornar a esta tela");
-        System.out.println(">Digite \"2\" para ver a sua ficha de personagem");
-        System.out.println(">Digite \"3\" para distribuir os pontos de atributos");
-      }
+        f.digitar("\t\t\t\t>TELINHA DE AJUDA\n\n\n"
+        +">Digite \"1\" para iniciar o rpg\n"
+        +">Digite \"666\" para sair do rpg\n"
+        +">Digite \"0\" para voltar ao menu\n"
+        +">Digite \"190\" para retornar a esta tela\n"
+        +">Digite \"2\" para ver a ficha do personagem\n"
+        +">Digite \"3\" para distribuir os pontos de atributos\n", 10);
+        }
     }
 
 
@@ -147,7 +152,7 @@ public class RpgImd{
 
 
 
-    public static void criarJogador(){
+    public static void criarJogador() throws IOException, InterruptedException{
       System.out.print(">Digite o nome do personagem");
       base();
       ignorarEnter = leitor.nextLine();
@@ -188,10 +193,9 @@ public class RpgImd{
 
 
 
-    public static void topo(){
-      for (int i = 0; i < 150; i++){
-        System.out.println("");
-      }
+      public static void topo() throws IOException, InterruptedException{
+        Ferramentas f = new Ferramentas();
+      f.limparTela();
       for (int j = 0; j < 120; j++){
         System.out.print("=");
       }
@@ -214,16 +218,7 @@ public class RpgImd{
     }
 
 
-
-    public static void limpar(){
-      for (int i = 0; i < 150; i++){
-        System.out.println("");
-      }
-    }
-
-
-
-    public static void distriAtributos(){
+    public static void distriAtributos() throws IOException, InterruptedException{
       jogador.distribuirAtributos();
     }
 
@@ -236,7 +231,7 @@ public class RpgImd{
 
 
     public static void testeA(){
-      jogador.setExperiencia(jogador.getExperiencia() + 900000000);
+      jogador.setExperiencia(jogador.getExperiencia() + 999999999);
     }
 
 
