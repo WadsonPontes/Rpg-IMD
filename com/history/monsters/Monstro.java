@@ -1,4 +1,4 @@
-package com.main;
+package com.history.monsters;
 
 public class Monstro{
 

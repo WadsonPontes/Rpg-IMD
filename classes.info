@@ -1,7 +1,7 @@
 com/main/Item.java
 com/main/RpgImd.java
 com/main/SerVivo.java
-com/main/Monstro.java
 com/main/Ferramentas.java
 com/main/SerVivoComLevel.java
+com/history/monsters/Monstro.java
 com/history/player/Personagem.java

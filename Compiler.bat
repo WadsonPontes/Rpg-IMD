@@ -25,14 +25,15 @@ for /F "tokens=*" %%A in (classes.info) do (
 
 :Execute
 echo.
-echo  -Iniciando RPG-Unknown's...
-start executar.bat
-echo.
-echo  ========================================================
 echo  -Jogo compilado.
+echo.
+echo  -Iniciando RPG-Unknown's...
+echo.
 color 04
-ping 127.0.0.1 -n 2 > nul
+echo  ========================================================
 echo  -SEJA BEM-VINDO AO INFERNO :D
 echo  ========================================================
+ping 127.0.0.1 -n 3 > nul
+start executar.bat
 echo.
 ping 127.0.0.1 -n 601 > nul
