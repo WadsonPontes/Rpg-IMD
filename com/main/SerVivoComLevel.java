@@ -9,6 +9,6 @@ public class SerVivoComLevel extends SerVivo{
       return  999999999;
     }
 
-    return Math.round(Math.floor(Math.pow(level + 4, 4.017) + 267) / ((level + 4) * 6) );
+    return Math.round(Math.floor(Math.pow(this.level + 4, 4.017) + 267) / ((this.level + 4) * 6) );
   }
 }

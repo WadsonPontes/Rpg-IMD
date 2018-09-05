@@ -26,7 +26,7 @@ public class Ferramentas{
 
     public void digitar(String text, int delay) throws IOException, InterruptedException{
         if (delay==0){
-            delay=30;
+            delay=15;
       }
 
         for(int i=1; i<=text.length();i++){
