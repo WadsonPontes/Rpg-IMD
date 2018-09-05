@@ -1,6 +1,7 @@
 package com.history.player;
 
 import com.main.*;
+import com.itens.*;
 import java.io.IOException;
 
 public class Personagem extends SerVivoComLevel{
@@ -17,6 +18,8 @@ public class Personagem extends SerVivoComLevel{
   private int pontosPassivos;
   private int pontosAtivos;
   private int pontosAtributos;
+  private ArmaDeCorte maoEsquerda = null;
+  private ArmaDeCorte maoDireita = null;
   public int danoG;
 
   public Personagem(){
