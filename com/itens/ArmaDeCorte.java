@@ -7,8 +7,23 @@ public class ArmaDeCorte{
   private int durabilidade;
 
   public ArmaDeCorte(){
-    
+
   }
 
+  public String getNome(){
+    return this.nome;
+  }
+  public int getValor(){
+    return this.valor;
+  }
+  public int getDano(){
+    return this.dano;
+  }
+  public int getDurabilidade(){
+    return this.durabilidade;
+  }
+  public void setDurabilidade(int durabilidade){
+    this.durabilidade = durabilidade;
+  }
 
 }

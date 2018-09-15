@@ -1,5 +1,6 @@
 package com.history.monsters;
 
+import com.history.player.*;
 public class Monstro{
 
 

@@ -2,6 +2,7 @@ package com.history.player;
 
 import com.main.*;
 import com.itens.*;
+import com.history.monsters.*;
 import java.io.IOException;
 
 public class Personagem extends SerVivoComLevel{
@@ -20,6 +21,9 @@ public class Personagem extends SerVivoComLevel{
   private int pontosAtributos;
   private ArmaDeCorte maoEsquerda = null;
   private ArmaDeCorte maoDireita = null;
+  private Monstro inimigo = null;
+  private ItemDeCura bolso1 = null;
+  private ItemDeCura bolso2 = null;
   public int danoG;
 
   public Personagem(){
@@ -135,7 +139,7 @@ public class Personagem extends SerVivoComLevel{
 
   public void personagemNovo() throws IOException, InterruptedException{
     this.dinheiro = 100;
-    level = 1;
+    this.level = 1;
     this.experienciaAtual = 0;
     this.forca = 5;
     this.constituicao = 5;
@@ -345,6 +349,7 @@ public class Personagem extends SerVivoComLevel{
         d10();
         this.danoG = this.dano() + dadod10;
         System.out.print("Voce causou " + this.danoG + " de dano");
+        this.inimigo.setVida(this.forca/2);
         }
 
         else{
@@ -359,6 +364,7 @@ public class Personagem extends SerVivoComLevel{
         d10();
         this.danoG = this.dano() + dadod10;
         System.out.print("Voce causou " + this.danoG + " de dano");
+        this.inimigo.setVida(this.destreza/3);
         }
 
         else{
@@ -373,6 +379,7 @@ public class Personagem extends SerVivoComLevel{
         d10();
         this.danoG = this.dano() + dadod10;
         System.out.print("Voce causou " + this.danoG + " de dano");
+        this.inimigo.setVida(this.inteligencia);
         }
 
         else{

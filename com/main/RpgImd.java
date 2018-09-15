@@ -11,7 +11,6 @@ public class RpgImd{
     public static Random gerador = new Random();
     public static Personagem jogador = new Personagem();
     public static int escolha;
-    public static int dificuldade = 5;
     public static int classeNumero;
     public static int dadod20;
     public static int dadod10;
