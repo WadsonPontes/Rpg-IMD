@@ -1,10 +1,10 @@
 package com.main;
 
-public class SerVivo extends RpgImd{
+public class SerVivo {
 
-  public int vida;
-  public int vidaCheia;
-  public String nome;
-  public Item[] drop;
+    public int vida;
+    public int vidaCheia;
+    public String nome;
+    public Item[] drop;
 
 }
